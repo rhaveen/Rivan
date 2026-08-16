@@ -117,6 +117,14 @@ VRF info: (vrf in name/id, vrf out name/id)
 
 How to change route to D2 instead of D1 in P1
 
+!! Change to D2 by no command see below
+p1:
+config T
+ip route 0.0.0.0  0.0.0.0 10.2.1.1 1
+ip route 0.0.0.0  0.0.0.0 10.2.1.2 2
+!floating Static Routes
+do sh ip route static
+
 config T
 no ip route 0.0.0.0  0.0.0.0 10.2.1.1 1
 end
