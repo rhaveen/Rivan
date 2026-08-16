@@ -1,0 +1,27 @@
+DPWH: 16 hosts
+IP address: 45.60.157.0/20
+Convert: 5 bits
+Subtract:32 - 5 = 27 (4th, 32i)
+I: 45.60.157.32/27
+URS: 45.60.157.32/27
++1:  45.60.157.33/27
+-1lv: 45.60.157.62
+-1 Broadcast: 45.60.157.63
+
+NOTurs:  45.60.157.64
+
+
+C2/D2
+config t
+vlan 25
+ name DPWH.com
+ exit
+Int vlan 25
+ no shut
+ ip add 45.60.157.33 255.255.255.224
+ip dhcp excluded-add 45.60.157.33 45.60.157.43
+ip dhcp pool DPWH.com
+ network 45.60.157.32 255.255.255.224
+ default-router 45.60.157.33
+ domain-name DPWH.com
+end
