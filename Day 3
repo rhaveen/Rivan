@@ -25,3 +25,16 @@ ip dhcp pool DPWH.com
  default-router 45.60.157.33
  domain-name DPWH.com
 end
+
+
+ROUTING
+Commandment 1: Ping Dikit
+Commandment 2: Route not DIKIT
+
+Static:
+R2:
+conf t
+ip route 10.1.1.9 255.255.255.252 10.1.1.6
+end
+
+
