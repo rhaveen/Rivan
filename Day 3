@@ -143,5 +143,6 @@ VRF info: (vrf in name/id, vrf out name/id)
   7 core45e01.google.com (45.4.5.5) 1 msec *  1 msec
 
 
-
+Bonus:
+cmd: netstat -n -p tcp
 
