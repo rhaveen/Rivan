@@ -32,9 +32,108 @@ Commandment 1: Ping Dikit
 Commandment 2: Route not DIKIT
 
 Static:
-R2:
+R2: ping 
 conf t
-ip route 10.1.1.9 255.255.255.252 10.1.1.6
+ip route 10.1.1.9 255.255.255.255 10.1.1.6
 end
+
+conf t
+ip route 10.1.1.8 255.255.255.252 10.1.1.6
+end
+
+ayaw di mag kakilala 
+
+conf t
+ip route 10.1.1.4 255.255.255.252 10.1.1.9
+
+
+ 192.168.10.101/27, what is the NetworkAddress:0,32,64,96[NetAddress]
+
+192.168.10.101/27
+192.168.10.0
+
+
+
+config t
+ip route  192.168.1.128 255.255.255.224 10.2.1.1 1 
+ip route  192.168.1.130 255.255.255.255 10.2.1.2
+
+GRASA
+
+G:
+R:
+A:
+S:
+A:
+
+
+R4:
+config t
+Int loopback 0
+ ip add 4.4.4.4 255.255.255.255
+router ospf 1
+router-id 4.4.4.4
+network 4.4.4.4 0.0.0.0 area 0
+network 10.1.1.8 0.0.0.3 area 0
+interface e1/2
+   ip ospf network point-to-point
+   !eto lab sa exam sa 2024/2025
+end
+
+
+R3:
+config t
+Int loopback 0
+ ip add 3.3.3.3 255.255.255.255
+router ospf 1
+router-id 3.3.3.3
+network 3.3.3.3 0.0.0.0 area 0
+network 10.1.1.4 0.0.0.3 area 0
+network 10.1.1.8 0.0.0.3 area 0
+interface e1/2
+   ip ospf network point-to-point
+end
+
+
+D - DOWN
+I - INIT
+T - TWO-WAY
+E - Exstart
+E - Exchange
+L - Loading
+F - FULL
+
+P1#traceroute 8.8.8.8
+Type escape sequence to abort.
+Tracing the route to dns.google.com (8.8.8.8)
+VRF info: (vrf in name/id, vrf out name/id)
+  1 core1v10.rivanit.com (10.2.1.1) 0 msec 1 msec 0 msec !! Dumaan sa D1
+  2 edge10-R4e10.rivanit.com (10.1.4.5) 0 msec 1 msec 0 msec !!R4
+  3 fortinet-R3e12.rivanit.com (10.1.1.9) 0 msec 0 msec 0 msec !!R30
+  4 paloalto-R2e11.rivanit.com (10.1.1.5) 0 msec 0 msec 1 msec !!R2
+  5 ciscofirepower-R1e10.bgp.rivanit.com (10.1.1.1) 0 msec 1 msec 0 msec !!R1
+  6 core208e13.isp1convergeict.com (208.8.8.4) 1 msec 0 msec 0 msec !!Converge
+  7 core45e01.google.com (45.4.5.5) 1 msec *  1 msec !!Goggle
+
+How to change route to D2 instead of D1 in P1
+
+config T
+no ip route 0.0.0.0  0.0.0.0 10.2.1.1 1
+end
+
+result:
+P1#traceroute 8.8.8.8
+Type escape sequence to abort.
+Tracing the route to dns.google.com (8.8.8.8)
+VRF info: (vrf in name/id, vrf out name/id)
+  1 core2v10.rivanit.com (10.2.1.2) 1 msec 0 msec 0 msec
+  2 edge10-R4e11.rivanit.com (10.1.4.9) 1 msec 0 msec 0 msec
+  3 fortinet-R3e12.rivanit.com (10.1.1.9) 1 msec 0 msec 0 msec
+  4 paloalto-R2e11.rivanit.com (10.1.1.5) 1 msec 0 msec 0 msec
+  5 ciscofirepower-R1e10.bgp.rivanit.com (10.1.1.1) 0 msec 0 msec 1 msec
+  6 core208e13.isp1convergeict.com (208.8.8.4) 0 msec 1 msec 0 msec
+  7 core45e01.google.com (45.4.5.5) 1 msec *  1 msec
+
+
 
 
