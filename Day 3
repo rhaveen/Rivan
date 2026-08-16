@@ -145,4 +145,6 @@ VRF info: (vrf in name/id, vrf out name/id)
 
 Bonus:
 cmd: netstat -n -p tcp !checking ip history
-
+nmap - v 45.60.157.243
+ping www.icct.edu.ph
+namp -v 192.124.249.155
